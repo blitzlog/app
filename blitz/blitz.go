@@ -16,20 +16,17 @@ import (
 
 const (
 	credentialsSubPath = ".blitz/credentials"
+	apiAddress         = "https://test.blitzlog.com:8080"
 )
 
 func main() {
-
-	defer log.Flush()
-
-	log.I("searching for logs")
 
 	// parse flags
 	parseFlags()
 
 	err := logs(fFilter, fStart, fEnd)
 	if err != nil {
-		log.E(err.Error())
+		fmt.Println(err.Error())
 	}
 }
 
@@ -41,13 +38,8 @@ func logs(filter, start, end string) error {
 		return errors.Wrap(err, "getting token")
 	}
 
-	log.I("account: %s token: %s", accountId, token)
-
 	// create new api client
-	apiAddress := "https://test.blitzlog.com:8080"
 	apiClient := client.New(apiAddress)
-
-	log.I("created client: %v", apiClient)
 
 	// use client to get logs
 	resp, err := apiClient.GetLogs(accountId, token)
@@ -55,9 +47,11 @@ func logs(filter, start, end string) error {
 		return errors.Wrap(err, "getting response from api server")
 	}
 
-	log.I("get logs response: %v", resp)
+	for _, lg := range resp.GetLogs() {
+		fmt.Println(log.Format(lg))
+	}
 
-	return errors.New("not implemented")
+	return nil
 }
 
 type credentials struct {
@@ -71,8 +65,7 @@ func getCredentials() (string, string, error) {
 	// get user
 	usr, err := user.Current()
 	if err != nil {
-		log.E("could not get current user")
-		return "", "", err
+		return "", "", errors.Wrap(err, "error getting current user")
 	}
 
 	// read credentials file
@@ -98,7 +91,7 @@ var (
 
 func parseFlags() {
 
-	flag.StringVar(&fFilter, "filter", "", "apply this filter when searching logs")
+	flag.StringVar(&fFilter, "filter", "", "apply filter when searching logs")
 	flag.StringVar(&fStart, "start", "", "start of duration for searching logs")
 	flag.StringVar(&fEnd, "end", "", "end of duration for searching logs")
 

@@ -8,7 +8,6 @@ import (
 	"net/http"
 
 	"github.com/blitzlog/errors"
-	"github.com/blitzlog/log"
 	"github.com/blitzlog/proto/api"
 )
 
@@ -123,9 +122,6 @@ func (c *Client) do(method, route, token string, in, out interface{},
 
 	// create url
 	url := fmt.Sprintf("%s/%s", c.address, route)
-
-	log.I("api url: %s", url)
-	log.I("api method: %s", method)
 
 	// marshal payload
 	payload, err := json.Marshal(in)

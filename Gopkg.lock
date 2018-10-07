@@ -11,11 +11,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:7b036f87214fe4b70e18fc48976c63afa4f7b7f01fa2e13b4c4449a7a4da2959"
+  digest = "1:708a13df6299ed484e91415d4bd4209b474b558f3b14861e24d017ef2b984259"
   name = "github.com/blitzlog/log"
   packages = ["."]
   pruneopts = "UT"
-  revision = "3944a0c20f433fac531c59da922b910dc2504664"
+  revision = "fa4149c9992c8d0d6f4b21d184dee3025b451f37"
 
 [[projects]]
   branch = "master"
