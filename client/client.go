@@ -9,6 +9,7 @@ import (
 
 	"github.com/blitzlog/errors"
 	"github.com/blitzlog/proto/api"
+	"github.com/blitzlog/proto/common"
 )
 
 type Client struct {
@@ -109,8 +110,19 @@ func (c *Client) GetLogs(accountId, token string) (
 
 	method, route, status := "POST", "v1/accounts/%s/logs", 200
 
+	// create route
 	route = fmt.Sprintf(route, accountId)
-	getLogsRequest := &api.GetLogsRequest{}
+
+	// create get log request
+	getLogsRequest := &api.GetLogsRequest{
+		Query: &common.LogQuery{
+			Page: &common.QueryPage{
+				Size: 1000,
+			},
+		},
+	}
+
+	// object to write response to
 	getLogsResponse := new(api.GetLogsResponse)
 
 	return getLogsResponse, c.do(method, route, token,
