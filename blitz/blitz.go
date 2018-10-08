@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os/user"
+	"time"
 
 	"github.com/blitzlog/app/client"
 	"github.com/blitzlog/errors"
@@ -42,8 +43,10 @@ func logs(filter, start, end string) error {
 	apiClient := client.New(apiAddress)
 
 	// get start and end ms
-	startMs := parseTime(start)
-	endMs := parseTime(end)
+	var (
+		startMs = parseTime(start)
+		endMs   = parseTime(end)
+	)
 
 	// use client to get logs
 	resp, err := apiClient.GetLogs(accountId, token, filter, startMs, endMs)
@@ -87,6 +90,10 @@ func getCredentials() (string, string, error) {
 }
 
 func parseTime(timeStr string) int64 {
+	t, err := time.Parse(time.RFC3339, timeStr)
+	if err == nil {
+		return t.UnixNano() / 1e6
+	}
 	return 0
 }
 
