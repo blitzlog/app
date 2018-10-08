@@ -89,8 +89,10 @@ func getCredentials() (string, string, error) {
 	return creds.AccountId, creds.Token, nil
 }
 
+var timeFormat = "2006-01-02T15:04:05"
+
 func parseTime(timeStr string) int64 {
-	t, err := time.Parse(time.RFC3339, timeStr)
+	t, err := time.Parse(timeFormat, timeStr)
 	if err == nil {
 		return t.UnixNano() / 1e6
 	}
