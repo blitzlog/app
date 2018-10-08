@@ -41,8 +41,12 @@ func logs(filter, start, end string) error {
 	// create new api client
 	apiClient := client.New(apiAddress)
 
+	// get start and end ms
+	startMs := parseTime(start)
+	endMs := parseTime(end)
+
 	// use client to get logs
-	resp, err := apiClient.GetLogs(accountId, token)
+	resp, err := apiClient.GetLogs(accountId, token, filter, startMs, endMs)
 	if err != nil {
 		return errors.Wrap(err, "getting response from api server")
 	}
@@ -82,6 +86,10 @@ func getCredentials() (string, string, error) {
 	return creds.AccountId, creds.Token, nil
 }
 
+func parseTime(timeStr string) int64 {
+	return 0
+}
+
 // flags passed to blitz
 var (
 	fFilter string
@@ -92,8 +100,8 @@ var (
 func parseFlags() {
 
 	flag.StringVar(&fFilter, "filter", "", "apply filter when searching logs")
-	flag.StringVar(&fStart, "start", "", "start of duration for searching logs")
-	flag.StringVar(&fEnd, "end", "", "end of duration for searching logs")
+	flag.StringVar(&fStart, "start", "", "start time for searching logs")
+	flag.StringVar(&fEnd, "end", "", "end time for searching logs")
 
 	flag.Parse()
 }

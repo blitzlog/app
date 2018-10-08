@@ -105,7 +105,7 @@ func (c *Client) GetKeys(accountId, token string) (
 		nil, getKeysResponse, status)
 }
 
-func (c *Client) GetLogs(accountId, token string) (
+func (c *Client) GetLogs(accountId, token, filter string, startMs, endMs int64) (
 	*api.GetLogsResponse, error) {
 
 	method, route, status := "POST", "v1/accounts/%s/logs", 200
@@ -116,6 +116,11 @@ func (c *Client) GetLogs(accountId, token string) (
 	// create get log request
 	getLogsRequest := &api.GetLogsRequest{
 		Query: &common.LogQuery{
+			Filter: filter,
+			Duration: &common.QueryDuration{
+				StartMs: startMs,
+				EndMs:   endMs,
+			},
 			Page: &common.QueryPage{
 				Size: 1000,
 			},
