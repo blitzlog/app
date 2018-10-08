@@ -11,11 +11,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:708a13df6299ed484e91415d4bd4209b474b558f3b14861e24d017ef2b984259"
+  digest = "1:8c4776aac23d1b60ec62ec34d8d5aa15040bd1c44389a148bfcd9b15df503b70"
   name = "github.com/blitzlog/log"
   packages = ["."]
   pruneopts = "UT"
-  revision = "fa4149c9992c8d0d6f4b21d184dee3025b451f37"
+  revision = "4364a42e0608cc49d3bfcd057af58ea65879da8b"
 
 [[projects]]
   branch = "master"
@@ -149,6 +149,7 @@
     "github.com/blitzlog/errors",
     "github.com/blitzlog/log",
     "github.com/blitzlog/proto/api",
+    "github.com/blitzlog/proto/common",
     "gopkg.in/yaml.v2",
   ]
   solver-name = "gps-cdcl"
