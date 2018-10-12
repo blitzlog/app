@@ -77,7 +77,7 @@ func (c *Client) CreateOrgAccount(accountName, token string) (
 	createAccountResponse := new(api.CreateAccountResponse)
 
 	return createAccountResponse, c.do(method, route, token,
-		createOrgRequest, createAccountResponse, status)
+		createAccountRequest, createAccountResponse, status)
 }
 
 func (c *Client) CreateKey(accountId, token string) (
