@@ -66,18 +66,18 @@ func (c *Client) GetAccount(accountId, token string) (
 }
 
 func (c *Client) CreateOrgAccount(accountName, token string) (
-	*api.CreateOrgResponse, error) {
+	*api.CreateAccountResponse, error) {
 
 	method, route, status := "POST", "v1/accounts", 200
 
-	createOrgRequest := &api.CreateAccountRequest{
+	createAccountRequest := &api.CreateAccountRequest{
 		Type: "organization",
 		Name: accountName,
 	}
-	createOrgResponse := new(api.CreateOrgResponse)
+	createAccountResponse := new(api.CreateAccountResponse)
 
-	return createOrgResponse, c.do(method, route, token,
-		createOrgRequest, createOrgResponse, status)
+	return createAccountResponse, c.do(method, route, token,
+		createOrgRequest, createAccountResponse, status)
 }
 
 func (c *Client) CreateKey(accountId, token string) (

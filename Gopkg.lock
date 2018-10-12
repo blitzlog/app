@@ -11,15 +11,15 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:8c4776aac23d1b60ec62ec34d8d5aa15040bd1c44389a148bfcd9b15df503b70"
+  digest = "1:424334896773c81945e432c31e903e2a2233922edd81fcc9726c05c6ccc8a981"
   name = "github.com/blitzlog/log"
   packages = ["."]
   pruneopts = "UT"
-  revision = "4364a42e0608cc49d3bfcd057af58ea65879da8b"
+  revision = "f9117629e6a43ad650e922a90afbf6488914e1bf"
 
 [[projects]]
   branch = "master"
-  digest = "1:7b530383f813dd86bbcc3fe26f0e654d0eecec1cff5265d817dc75d4a3e40583"
+  digest = "1:ecc02978ae9c96c953ce45c324fa5c4ced35563fc63d765fbdb3c1682e3e8b51"
   name = "github.com/blitzlog/proto"
   packages = [
     "api",
@@ -28,7 +28,7 @@
     "log",
   ]
   pruneopts = "UT"
-  revision = "54850c29985dc80f9415b74e07af481b3b968551"
+  revision = "7f8b6cd224efa5d825e74c1573ac84b5f7122e38"
 
 [[projects]]
   digest = "1:4c0989ca0bcd10799064318923b9bc2db6b4d6338dd75f3f2d86c3511aaaf5cf"
@@ -58,15 +58,15 @@
     "trace",
   ]
   pruneopts = "UT"
-  revision = "146acd28ed5894421fb5aac80ca93bc1b1f46f87"
+  revision = "49bb7cea24b1df9410e1712aa6433dae904ff66a"
 
 [[projects]]
   branch = "master"
-  digest = "1:c2789211d4035eb0843b85958ecf7cb4a5ea91c2d4decee652c94ce898e433cb"
+  digest = "1:0a40b0bdd57a93e741d8557465be3a2edeec408e9b6399586ad65bbe8e355796"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "4497e2df6f9e69048a54498c7affbbec3294ad47"
+  revision = "fa43e7bc11baaae89f3f902b2b4d832b68234844"
 
 [[projects]]
   digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"
